@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>better ciapong screen</title>
+    <link rel="stylesheet" href="config.css">
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=PT+Sans&display=swap" rel="stylesheet">
+</head>
+    <body onload="czas(), stacja()">
+        <div id="main">
+            <div id="scrHead">
+                <div id="czas">
+                    <p id="czasInp"></p>
+                </div>
+                <div id="data">
+                    <p id="kierunek">Kierunek: Kotków</p>
+                    <p id="dataInp"></p>
+                </div>
+            </div>
+            <div id="scrBody">
+                <p id="nextStop1" style="display:none;color:black;">Następna stacja: <p id="nextStop2" style="font-size:10px;color:black"></p></p>
+                <p id="stacja"></p>
+                <p id="predkosc"></p>
+            </div>
+            <div id="scrFoot">
+                <marquee scrollamount="5"><p>Przyjemnej podróży życzy PolRegio! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Przyjemnej podróży życzy PolRegio!</p></marquee>
+            </div>
+        </div>
+    </body>
+</html>

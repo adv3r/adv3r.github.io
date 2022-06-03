@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="icon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Kici formularz</title>
+</head>
+    <body>
+        <div class="main">
+            <label>Wprowadź imię kićka: <input type="text" id="catName" required></label><br><br>
+            <label>Wybierz rozmiar kićka: <select id="catSize" required>
+                <option value="kitten">smol</option>
+                <option value="junior">kiddo</option>
+                <option value="chonk">chomky</option>
+                <option value="adult">adult</option>
+            </select></label><br><br>
+            <label>Wybierz rasę kićka: <select id="catBreed">
+                <option value="Abyssinian">Abyssinian Cat</option>
+                <option value="American Bobtail">American Bobtail Cat</option>
+                <option value="American Shorthair">American Shorthair</option>
+                <option value="Bengal">Bengal</option>
+                <option value="Birman">Birman</option>
+                <option value="Burmese">Burmese</option>
+                <option value="British Shorthair">British Shorthair</option>
+                <option value="Devon Rex">Devon Rex</option>
+                <option value="Domestic">Domestic Cat</option>
+                <option value="Japanese Bobtail">Japanese Bobtail</option>
+                <option value="Maine Coon">Maine Coon</option>
+                <option value="Manx">Manx</option>
+                <option value="Munchkin">Munchkin</option>
+                <option value="Norwegian Forest">Norwegian Forest</option>
+                <option value="Oriental">Oriental</option>
+                <option value="Persian">Persian</option>
+                <option value="Ragdoll">Ragdoll</option>
+                <option value="Russian Blue">Russian Blue</option>
+                <option value="Siamese">Siamese</option>
+                <option value="Sphynx">Sphynx</option>
+            </select></label><br><br>
+            <label>Wprowadź kolor kićka: <select id="catColor">
+                <option value="black">black</option>
+                <option value="gray">gray</option>
+                <option value="lilac">lilac</option>
+                <option value="orange">orange</option>
+                <option value="brown">brown</option>
+                <option value="cinnamon">cinnamon</option>
+                <option value="fawn">fawn</option>
+                <option value="beige">beige</option>
+                <option value="white">white</option>
+                <option value="lavender">lavender</option>
+                <option value="tabby">tabby</option>
+                <option value="calico">calico</option>
+                <option value="tortoiseshell">tortoiseshell</option>
+            </select>
+            </label><br><br>
+            <button onclick="monit()">Wygeneruj mi kićka!</button>
+            <div id="loading" style="display:none;">
+                <p>Proszę czekać, trwa generowanie kićka...</p>
+            </div>
+            <br><br><br>
+            <div style="display:none;" id="catSummary">
+                <p id="catSum"></p><br><br>
+                <a href="https://www.google.com/imghp?hl=en" id="catLink"></a>
+            </div>
+        </div>
+    </body>
+</html>
