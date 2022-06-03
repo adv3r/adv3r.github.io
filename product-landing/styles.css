@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: rgb(64,255,0);
+    }
+}
+body{
+    margin:0;
+    padding:0;
+    background-color: rgb(190, 190, 190);
+    font-family: 'Yatra One',
+    cursive;
+}
+#header{
+    background-color: rgba(162, 162, 162, 0.892);
+    position: fixed;
+    width:100%;
+    padding:5px;
+    box-shadow: 0 30px 40px rgba(0, 0, 0, .1);
+}
+nav > ul{
+    width: 35vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size:18px;
+    font-weight: bold;
+}
+ul li{
+    list-style-type: none;
+}
+ul li:hover{
+    letter-spacing: 1px;
+}
+a:link{
+    text-decoration: none;
+}
+a{
+    color:black;
+}
+#nav-bar{
+    float:right;
+}
+#main{
+    text-align: center;
+}
+button{
+    background-color: rgb(61, 61, 61);
+    border:2px solid black;
+    border-radius:3px;
+    color:rgb(199, 199, 199);
+}
+input{
+    background-color: rgb(61, 61, 61);
+    border:2px solid black;
+    border-radius:3px;
+    color:rgb(255, 255, 255);
+}
+#reasons{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.reason{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: calc(100% / 3);
+    margin: 10px;
+}
+iframe{
+    margin:10px;
+}
+#about{
+    text-align: center;
+    background-color:rgba(157, 157, 157, 0.626);
+}

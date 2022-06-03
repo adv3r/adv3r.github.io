@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+    <body>
+        <div id="main">
+            <h1 id="title">Welcome in Meow Meow Cat Hotel!</h1>
+            <p id="description">Please fill this form to register your cat!</p>
+            <form id="survey-form">
+                <label id="name-label">Please enter a cat name: <input type="text" name="name" id="name" placeholder="Pimpek" required></label><br><br>
+                <label id="email-label">Please enter your email: <input type="text" name="name" id="email" placeholder="mail@example.com" required></label><br><br>
+                <label id="number-label">How many days will cat stay in the hotel: <input type="number" name="days" id="number" min="1" max="90" placeholder="1-90" required></label><br><br>
+                <label>How old is your cat?<br><select name="drop" id="dropdown">
+                    <option>Kitten</option>
+                    <option>Junior</option>
+                    <option>Mature</option>
+                    <option>Senior</option>
+                </select>
+                <p>Is your cat highly aggresive?</p>
+                    <label><input type="radio" name="aggr" value="yes">Yes</label><br>
+                    <label><input type="radio" name="aggr" value="no">No</label><br>
+                    <label><input type="radio" name="aggr" value="idk">Sometimes (if hungry)</label><br>
+                
+                <p>Your cat's favourite foods? (select all that apply)</p>
+                <label><input type="checkbox" value="fish">fish</label><br>
+                <label><input type="checkbox" value="meat">meat</label><br>
+                <label><input type="checkbox" value="friskies">friskies</label><br>
+                <label><input type="checkbox" value="whiskas">whiskas</label><br>
+                <label><input type="checkbox" value="purina">purina</label><br>
+                <label><input type="checkbox" value="canin">royal canin</label><br>
+
+                <p>Do you have any other important information about your cat?</p>
+                <textarea cols="30" rows="5" placeholder="Any information about your cat...."></textarea><br><br>
+
+                <button type="submit" id="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

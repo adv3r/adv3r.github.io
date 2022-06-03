@@ -1,0 +1,27 @@
+#main{
+    width:100%;
+    height:max-content;
+    text-align: center;
+    background:lightgray;
+    padding:5px;
+    border-radius:1%;
+}
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+ul li {
+    display: list-item;
+    background: black;
+    padding: 5px 8px;
+    color: white;
+    margin: 0 3px;
+}
+img#main{
+    text-align: center;
+}
+#image{
+    max-width: 100%;
+    height:auto;
+}
