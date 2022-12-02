@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0a0a0a;
+}
+.btn {
+    position: absolute;
+    top: 5%;
+}
+.btn_cat {
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-radius: 3px;
+    color: #fff;
+    background: #000;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+    padding: 12px 20px;
+    text-align: center;
+    transition-duration: .15s;
+    transition-property: all;
+    transition-timing-function: linear;
+    border: 2px solid #ffff99;
+    border-radius: 5px;
+}
+.btn_cat:hover {
+    color: #000;
+    background: rgb(255, 218, 87);
+}
+.cat-cube {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: animate-the-CAT 20s linear infinite;
+}
+@keyframes animate-the-CAT {
+    0%{
+        transform: rotateX(-30deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateX(-30deg) rotateY(360deg);
+    }
+}
+.cat-cube div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+.cat-cube div span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('./kostek.png');
+    background-size: auto;
+    transform: rotateY(calc(90deg * var(--i))) translateZ(150px);
+    background-size: cover;
+    background-position: center;
+}
+.top-cat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: url('./kostek.png');
+    background-size: auto;
+    background-size: cover;
+    background-position: center;
+    transform: rotateX(90deg) translateZ(150px);
+}
+.top-cat:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: lightpink;
+    transform: translateZ(-380px);
+    filter: blur(20px);
+    box-shadow: 0 0 120px rgba(255, 182, 193, 0.2), 
+    0 0 200px rgba(255,182,193,0.4),
+    0 0 300px rgba(255, 182, 193, 0.6), 
+    0 0 400px rgba(255, 182, 193, 0.8),
+    0 0 500px rgba(255, 182, 193, 1);
+}

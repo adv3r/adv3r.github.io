@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>cat cube</title>
+</head>
+<body>
+    <div class="btn">
+        <button onclick="catChange('cat')" class="btn_cat">cat.png</button>
+        <button onclick="catChange('kostek')" class="btn_cat">kostek</button>
+    </div>
+    <div class="cat-cube">
+        <div class="top-cat"></div>
+        <div>
+            <span style="--i:0;" class="cat-photo"></span>
+            <span style="--i:1;" class="cat-photo"></span>
+            <span style="--i:2;" class="cat-photo"></span>
+            <span style="--i:3;" class="cat-photo"></span>
+        </div>
+    </div>
+    <script>
+        const catChange = (x) => {
+            if(x == 'cat') {
+                for(i=0; i<=3; i++){
+                    document.getElementsByClassName('cat-photo')[i].style.backgroundImage = "url('./cat.png')"; 
+                }
+                document.getElementsByClassName('top-cat')[0].style.backgroundImage = "url('./cat.png')"; 
+            }else if(x == 'kostek'){
+                for (i = 0; i <= 3; i++) {
+                    document.getElementsByClassName('cat-photo')[i].style.backgroundImage = "url('./kostek.png')";
+                }
+                document.getElementsByClassName('top-cat')[0].style.backgroundImage = "url('./kostek.png')"; 
+            }
+        }
+    </script>
+</body>
+</html>
