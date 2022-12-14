@@ -6,8 +6,6 @@ const gen = () => {
     canvas.width = document.getElementById('width').value;
     canvas.height = document.getElementById('height').value;
 
-    console.log(canvas.width, canvas.height);
-
     let ctx = canvas.getContext('2d');
 
     for (let x = 0; x < canvas.width; x++) {
