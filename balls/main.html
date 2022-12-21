@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+
+            canvas.width = 500;
+            canvas.height = 500;
+
+
+            const balls = [{
+                color: 'red',
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 4,
+                vy: (Math.random() - 0.5) * 4
+            },
+            {
+                color: 'blue',
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 4,
+                vy: (Math.random() - 0.5) * 4
+            },
+            {
+                color: 'green',
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 4,
+                vy: (Math.random() - 0.5) * 4
+            }
+            ];
+            for (let i = 0; i < 2; i++) {
+                balls.push({
+                    color: 'red',
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: (Math.random() - 0.5) * 4
+                });
+                balls.push({
+                    color: 'blue',
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: (Math.random() - 0.5) * 4
+                });
+                balls.push({
+                    color: 'green',
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: (Math.random() - 0.5) * 4
+                });
+            }
+
+            const MAX_SPEED = 1;
+
+            let redCount = 0;
+            let blueCount = 0;
+            let greenCount = 0;
+
+
+            function update() {
+                balls.forEach(ball => {
+                    ball.vx += 0.01;
+                    ball.vy += 0.01;
+                    ball.x += ball.vx;
+                    ball.y += ball.vy;
+
+
+                    // Jeśli kulka odbija się od lewej lub prawej krawędzi, zmień kierunek ruchu w poziomie
+                    if (ball.x - 20 < 0 || ball.x + 20 > canvas.width) {
+                        ball.vx = -ball.vx;
+                    }
+                    // Jeśli kulka odbija się od górnej lub dolnej krawędzi, zmień kierunek ruchu w pionie
+                    if (ball.y - 20 < 0 || ball.y + 20 > canvas.height) {
+                        ball.vy = -ball.vy;
+                    }
+
+                    balls.forEach(otherBall => {
+                        if (ball === otherBall) return;
+
+                        const dx = ball.x - otherBall.x;
+                        const dy = ball.y - otherBall.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 20) {
+                            ball.vx = -ball.vx;
+                            ball.vy = -ball.vy;
+                            otherBall.vx = -otherBall.vx;
+                            otherBall.vy = -otherBall.vy;
+
+                            // Zmień kolor każdej z kul na losowy z dwóch tych, jakiego są koloru
+                            const colors = ['red', 'blue', 'green'];
+                            const color1 = ball.color;
+                            const color2 = otherBall.color;
+                            colors.splice(colors.indexOf(color1), 1);
+                            colors.splice(colors.indexOf(color2), 1);
+                            ball.color = colors[Math.floor(Math.random() * 2)];
+                            otherBall.color = colors[Math.floor(Math.random() * 2)];
+
+                            // Aktualizuj licznik dla każdego koloru
+                            if (color1 === 'red') {
+                                redCount--;
+                            } else if (color1 === 'blue') {
+                                blueCount--;
+                            } else if (color1 === 'green') {
+                                greenCount--;
+                            }
+                            if (color2 === 'red') {
+                                redCount--;
+                            } else if (color2 === 'blue') {
+                                blueCount--;
+                            } else if (color2 === 'green') {
+                                greenCount--;
+                            }
+                            if (ball.color === 'red') {
+                                redCount++;
+                            } else if (ball.color === 'blue') {
+                                blueCount++;
+                            } else if (ball.color === 'green') {
+                                greenCount++;
+                            }
+                            if (otherBall.color === 'red') {
+                                redCount++;
+                            } else if (otherBall.color === 'blue') {
+                                blueCount++;
+                            } else if (otherBall.color === 'green') {
+                                greenCount++;
+                            }
+                        }
+
+                        if (redCount === (balls.length - 2) || blueCount === (balls.length - 2) || greenCount === (balls.length - 2)) {
+                            // Jeśli tak, zatrzymaj ruch kulek
+                            ball.vx = 0;
+                            ball.vy = 0;
+                        }
+                    });
+                })
+            }
+
+
+            function draw(context) {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+
+                balls.forEach(ball => {
+                    context.beginPath();
+                    context.arc(ball.x, ball.y, 20, 0, 2 * Math.PI);
+                    context.fillStyle = ball.color;
+                    context.fill();
+                });
+            }
+
+            function countBalls() {
+                redBalls = balls.filter(ball => ball.color === 'red').length;
+                blueBalls = balls.filter(ball => ball.color === 'blue').length;
+                greenBalls = balls.filter(ball => ball.color === 'green').length;
+            }
+
+            function gameLoop() {
+                update();
+                draw(context);
+                countBalls();
+                document.querySelector('#red').textContent = redBalls;
+                document.querySelector('#blue').textContent = blueBalls;
+                document.querySelector('#green').textContent = greenBalls;
+
+
+                requestAnimationFrame(gameLoop);
+            }
+
+
+            requestAnimationFrame(gameLoop);
+    </script>
+    <br><br>
+    red: <span id="red"></span><br><br>
+    blue: <span id="blue"></span><br><br>
+    green: <span id="green"></span><br><br>
+</body>
+</html>
