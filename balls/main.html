@@ -36,7 +36,7 @@
                 vy: (Math.random() - 0.5) * 4
             },
             {
-                color: 'green',
+                color: 'yellow',
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 vx: (Math.random() - 0.5) * 4,
@@ -59,7 +59,7 @@
                     vy: (Math.random() - 0.5) * 4
                 });
                 balls.push({
-                    color: 'green',
+                    color: 'yellow',
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
                     vx: (Math.random() - 0.5) * 4,
@@ -71,7 +71,7 @@
 
             let redCount = 0;
             let blueCount = 0;
-            let greenCount = 0;
+            let yellowCount = 0;
 
 
             function update() {
@@ -118,33 +118,33 @@
                                 redCount--;
                             } else if (color1 === 'blue') {
                                 blueCount--;
-                            } else if (color1 === 'green') {
-                                greenCount--;
+                            } else if (color1 === 'yellow') {
+                                yellowCount--;
                             }
                             if (color2 === 'red') {
                                 redCount--;
                             } else if (color2 === 'blue') {
                                 blueCount--;
-                            } else if (color2 === 'green') {
-                                greenCount--;
+                            } else if (color2 === 'yellow') {
+                                yellowCount--;
                             }
                             if (ball.color === 'red') {
                                 redCount++;
                             } else if (ball.color === 'blue') {
                                 blueCount++;
-                            } else if (ball.color === 'green') {
-                                greenCount++;
+                            } else if (ball.color === 'yellow') {
+                                yellowCount++;
                             }
                             if (otherBall.color === 'red') {
                                 redCount++;
                             } else if (otherBall.color === 'blue') {
                                 blueCount++;
-                            } else if (otherBall.color === 'green') {
-                                greenCount++;
+                            } else if (otherBall.color === 'yellow') {
+                                yellowCount++;
                             }
                         }
 
-                        if (redCount === (balls.length - 2) || blueCount === (balls.length - 2) || greenCount === (balls.length - 2)) {
+                        if (redCount === (balls.length - 2) || blueCount === (balls.length - 2) || yellowCount === (balls.length - 2)) {
                             // Jeśli tak, zatrzymaj ruch kulek
                             ball.vx = 0;
                             ball.vy = 0;
@@ -168,7 +168,7 @@
             function countBalls() {
                 redBalls = balls.filter(ball => ball.color === 'red').length;
                 blueBalls = balls.filter(ball => ball.color === 'blue').length;
-                greenBalls = balls.filter(ball => ball.color === 'green').length;
+                yellowBalls = balls.filter(ball => ball.color === 'yellow').length;
             }
 
             function gameLoop() {
@@ -177,7 +177,7 @@
                 countBalls();
                 document.querySelector('#red').textContent = redBalls;
                 document.querySelector('#blue').textContent = blueBalls;
-                document.querySelector('#green').textContent = greenBalls;
+                document.querySelector('#yellow').textContent = yellowBalls;
 
 
                 requestAnimationFrame(gameLoop);
@@ -189,6 +189,6 @@
     <br><br>
     red: <span id="red"></span><br><br>
     blue: <span id="blue"></span><br><br>
-    green: <span id="green"></span><br><br>
+    yellow: <span id="yellow"></span><br><br>
 </body>
 </html>
