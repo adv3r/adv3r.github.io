@@ -1,6 +1,5 @@
 {
-    "lastIncidentDate": "",
-    "daysSinceLastIncident": 0,
-    "recordDaysWithoutIncident": 0,
-    "accidentsInYear": 0
+    "lastFailureDate": "",
+    "maxDaysWithoutFailure": 0,
+    "numberOfFailuresThisYear": 0
 }
