@@ -28,7 +28,7 @@
 
         const getData = () => fetch("data.json").then(response => response.json());
 
-        const updateData = data => fetch("data.json", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+        const updateData = data => fetch("data.json", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
 
         const updateFields = ({ daysSinceLastIncident, recordDaysWithoutIncident, accidentsInYear }) => {
             daysSinceLastIncidentField.value = daysSinceLastIncident || 0;
