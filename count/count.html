@@ -1,60 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>error count</title>
-
-    
-</head>
-<body>
-    <label for="days-since-last-incident">Ilość dni bez awarii:</label>
-    <input type="number" id="days-since-last-incident" name="days-since-last-incident" readonly>
-    
-    <label for="record-days-without-incident">Rekord dni bez awarii:</label>
-    <input type="number" id="record-days-without-incident" name="record-days-without-incident" readonly>
-    
-    <label for="accidents-in-year">Ilość awarii w roku:</label>
-    <input type="number" id="accidents-in-year" name="accidents-in-year" readonly>
-    
-    <button id="incident-button">Czy awaria?</button>
-
+    <meta charset="UTF-8">
     <script>
-        const incidentButton = document.getElementById("incident-button");
-        const daysSinceLastIncidentField = document.getElementById("days-since-last-incident");
-        const recordDaysWithoutIncidentField = document.getElementById("record-days-without-incident");
-        const accidentsInYearField = document.getElementById("accidents-in-year");
-
-        const getData = () => fetch("data.json").then(response => response.json());
-
-        const updateData = data => fetch("data.json", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
-
-        const updateFields = ({ daysSinceLastIncident, recordDaysWithoutIncident, accidentsInYear }) => {
-            daysSinceLastIncidentField.value = daysSinceLastIncident || 0;
-            recordDaysWithoutIncidentField.value = recordDaysWithoutIncident || 0;
-            accidentsInYearField.value = accidentsInYear || 0;
+        window.onload = function () {
+            // Pobierz dane z pliku na serwerze
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var data = JSON.parse(xhr.responseText);
+                    var lastFailureDate = new Date(data.lastFailureDate);
+                    var maxDaysWithoutFailure = data.maxDaysWithoutFailure;
+                    var numberOfFailuresThisYear = data.numberOfFailuresThisYear;
+                    document.getElementById("daysWithoutFailure").innerHTML = (new Date() - lastFailureDate) / (1000 * 60 * 60 * 24);
+                    document.getElementById("maxDaysWithoutFailure").innerHTML = maxDaysWithoutFailure;
+                    document.getElementById("numberOfFailuresThisYear").innerHTML = numberOfFailuresThisYear;
+                }
+            };
+            xhr.open("GET", "data.php", true);
+            xhr.send();
+            // Zarejestruj funkcję obsługującą kliknięcie przycisku
+            document.getElementById("failureButton").addEventListener("click", function () {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var data = JSON.parse(xhr.responseText);
+                        var lastFailureDate = new Date(data.lastFailureDate);
+                        var maxDaysWithoutFailure = data.maxDaysWithoutFailure;
+                        var numberOfFailuresThisYear = data.numberOfFailuresThisYear;
+                        document.getElementById("daysWithoutFailure").innerHTML = 0;
+                        document.getElementById("maxDaysWithoutFailure").innerHTML = maxDaysWithoutFailure;
+                        document.getElementById("numberOfFailuresThisYear").innerHTML = numberOfFailuresThisYear;
+                    }
+                };
+                xhr.open("POST", "data.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send("action=failure");
+            });
         };
-
-        incidentButton.addEventListener("click", async () => {
-            const currentDate = new Date();
-            const data = await getData();
-
-            const lastIncidentDate = new Date(data.lastIncidentDate || currentDate.toJSON());
-            const daysSinceLastIncident = Math.floor((currentDate - lastIncidentDate) / (1000 * 60 * 60 * 24));
-
-            if (isNaN(daysSinceLastIncident) || daysSinceLastIncident < 0) return;
-
-            const newDaysSinceLastIncident = data.daysSinceLastIncident + daysSinceLastIncident;
-            const newRecordDaysWithoutIncident = Math.max(data.recordDaysWithoutIncident, newDaysSinceLastIncident);
-            const newAccidentsInYear = data.accidentsInYear + 1;
-
-            await updateData({ lastIncidentDate: currentDate.toJSON(), daysSinceLastIncident: newDaysSinceLastIncident, recordDaysWithoutIncident: newRecordDaysWithoutIncident, accidentsInYear: newAccidentsInYear });
-
-            updateFields({ daysSinceLastIncident: newDaysSinceLastIncident, recordDaysWithoutIncident: newRecordDaysWithoutIncident, accidentsInYear: newAccidentsInYear });
-        });
-
-        getData().then(updateFields);
     </script>
+</head>
+
+<body>
+    <p>Ilość dni bez awarii: <span id="daysWithoutFailure">0</span></p>
+    <p>Rekord dni bez awarii: <span id="maxDaysWithoutFailure">0</span></p>
+    <p>Ilość awarii w tym roku: <span id="numberOfFailuresThisYear">0</span></p>
+    <button id="failureButton">Zgłoś awarię</button>
 </body>
+
 </html>
