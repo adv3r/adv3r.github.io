@@ -96,8 +96,8 @@
             function onMove(event) {
                 if (isDragging) {
                     const deltaMove = {
-                        x: event.clientX - previousMousePosition.x,
-                        y: event.clientY - previousMousePosition.y
+                        x: event.clientX - previousMousePosition.x || event.touches[0].clientX - previousMousePosition.x,
+                        y: event.clientY - previousMousePosition.y || event.touches[0].clientY - previousMousePosition.y
                     };
 
                     const deltaRotationQuaternion = new THREE.Quaternion()
@@ -111,8 +111,8 @@
                     sphere.quaternion.multiplyQuaternions(deltaRotationQuaternion, sphere.quaternion);
 
                     previousMousePosition = {
-                        x: event.clientX,
-                        y: event.clientY
+                        x: event.clientX || event.touches[0].clientX,
+                        y: event.clientY || event.touches[0].clientY
                     };
                 }
             }
