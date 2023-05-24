@@ -78,22 +78,22 @@
                 y: 0
             };
 
-            // Obsługa zdarzenia naciśnięcia myszy
-            function onMouseDown(event) {
+            // Obsługa zdarzenia naciśnięcia myszy lub dotknięcia ekranu
+            function onStart(event) {
                 isDragging = true;
                 previousMousePosition = {
-                    x: event.clientX,
-                    y: event.clientY
+                    x: event.clientX || event.touches[0].clientX,
+                    y: event.clientY || event.touches[0].clientY
                 };
             }
 
-            // Obsługa zdarzenia puszczenia myszy
-            function onMouseUp(event) {
+            // Obsługa zdarzenia puszczenia myszy lub zakończenia dotknięcia ekranu
+            function onEnd(event) {
                 isDragging = false;
             }
 
-            // Obsługa zdarzenia ruchu myszy
-            function onMouseMove(event) {
+            // Obsługa zdarzenia ruchu myszy lub dotknięcia ekranu
+            function onMove(event) {
                 if (isDragging) {
                     const deltaMove = {
                         x: event.clientX - previousMousePosition.x,
@@ -123,15 +123,20 @@
             }
 
             // Obsługa zdarzeń myszy
-            document.addEventListener('mousedown', onMouseDown);
-            document.addEventListener('mouseup', onMouseUp);
-            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mousedown', onStart, false);
+            document.addEventListener('mouseup', onEnd, false);
+            document.addEventListener('mousemove', onMove, false);
+
+            // Obsługa zdarzeń dotyku
+            document.addEventListener('touchstart', onStart, false);
+            document.addEventListener('touchend', onEnd, false);
+            document.addEventListener('touchmove', onMove, false);
 
             // Funkcja animująca
             function animate() {
                 requestAnimationFrame(animate);
 
-                // Obracanie kuli wokół własnej osi, jeśli nie jest obracana myszką
+                // Obracanie kuli wokół własnej osi, jeśli nie jest obracana myszką/dotykiem
                 if (!isDragging) {
                     sphere.rotation.y += 0.005;
                 }
