@@ -54,6 +54,9 @@
             // Wczytanie obrazu na teksturę
             const textureLoader = new THREE.TextureLoader();
             const texture = textureLoader.load('https://i.imgur.com/iAnPM.jpeg');
+            texture.wrapS = THREE.RepeatWrapping; // Powtarzanie tekstury poziomo
+            texture.wrapT = THREE.RepeatWrapping; // Powtarzanie tekstury pionowo
+            texture.repeat.set(1, 1); // Liczba powtórzeń tekstury w osiach S i T
             material.map = texture;
 
             // Inicjalizacja meshu
@@ -69,23 +72,13 @@
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
             scene.add(ambientLight);
 
-            // Zmienne do obsługi obracania kuli
             let isDragging = false;
             let previousMousePosition = {
                 x: 0,
                 y: 0
             };
 
-            // Obsługa zdarzenia kliknięcia myszką
-            document.addEventListener('mousedown', onMouseDown);
-
-            // Obsługa zdarzenia zwolnienia przycisku myszki
-            document.addEventListener('mouseup', onMouseUp);
-
-            // Obsługa zdarzenia przesunięcia myszki
-            document.addEventListener('mousemove', onMouseMove);
-
-            // Funkcja obsługująca zdarzenie kliknięcia myszką
+            // Obsługa zdarzenia naciśnięcia myszy
             function onMouseDown(event) {
                 isDragging = true;
                 previousMousePosition = {
@@ -94,12 +87,12 @@
                 };
             }
 
-            // Funkcja obsługująca zdarzenie zwolnienia przycisku myszki
+            // Obsługa zdarzenia puszczenia myszy
             function onMouseUp(event) {
                 isDragging = false;
             }
 
-            // Funkcja obsługująca zdarzenie przesunięcia myszki
+            // Obsługa zdarzenia ruchu myszy
             function onMouseMove(event) {
                 if (isDragging) {
                     const deltaMove = {
@@ -107,7 +100,7 @@
                         y: event.clientY - previousMousePosition.y
                     };
 
-                    const rotationQuaternion = new THREE.Quaternion()
+                    const deltaRotationQuaternion = new THREE.Quaternion()
                         .setFromEuler(new THREE.Euler(
                             toRadians(deltaMove.y * 1),
                             toRadians(deltaMove.x * 1),
@@ -115,7 +108,7 @@
                             'XYZ'
                         ));
 
-                    sphere.quaternion.multiplyQuaternions(rotationQuaternion, sphere.quaternion);
+                    sphere.quaternion.multiplyQuaternions(deltaRotationQuaternion, sphere.quaternion);
 
                     previousMousePosition = {
                         x: event.clientX,
@@ -124,14 +117,25 @@
                 }
             }
 
-            // Funkcja konwertująca stopnie na radiany
+            // Funkcja pomocnicza do przeliczania stopni na radiany
             function toRadians(angle) {
                 return angle * (Math.PI / 180);
             }
 
+            // Obsługa zdarzeń myszy
+            document.addEventListener('mousedown', onMouseDown);
+            document.addEventListener('mouseup', onMouseUp);
+            document.addEventListener('mousemove', onMouseMove);
+
             // Funkcja animująca
             function animate() {
                 requestAnimationFrame(animate);
+
+                // Obracanie kuli wokół własnej osi, jeśli nie jest obracana myszką
+                if (!isDragging) {
+                    sphere.rotation.y += 0.005;
+                }
+
                 renderer.render(scene, camera);
             }
 
