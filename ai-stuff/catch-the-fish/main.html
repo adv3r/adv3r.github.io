@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        html {
+            cursor: url(./paw.png), auto;
+        }
+        body {
+            background: url(./watur.jpg) center center fixed;
+            background-size: cover;
+            background-color: rgba(60,60,60,.3);
+            background-blend-mode: multiply;
+        }
+        #fish {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            transition: left 0.01s cubic-bezier(0.03, 0.01, 0.79, 0.71), top 0.01s cubic-bezier(0.49, 1.15, 1, 0.97);
+        }
+        
+    </style>
+</head>
+
+<body>
+    <img src="./fish.png" id="fish" onmouseover="moveFish()">
+
+    <script>
+        function moveFish() {
+            var button = document.getElementById("fish");
+            var width = window.innerWidth - button.offsetWidth;
+            var height = window.innerHeight - button.offsetHeight;
+            var left = Math.random() * width;
+            var top = Math.random() * height;
+            button.style.left = left + "px";
+            button.style.top = top + "px";
+        }
+    </script>
+</body>
+
+</html>
