@@ -75,3 +75,9 @@ p:not(span) {
 .draw {
     color: beige;
 }
+.stats {
+    margin-top: 20px;
+    border: 1px solid white;
+    padding: 10px 20px;
+}
+        
