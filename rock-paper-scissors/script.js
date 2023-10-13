@@ -2,6 +2,7 @@ const buttons = document.querySelectorAll('button');
 const userChoiceSpan = document.querySelector('.user-choice');
 const computerChoiceSpan = document.querySelector('.computer-choice');
 const resultElement = document.querySelector('.game-result');
+const resultStatsContainer = document.querySelector('.result-stats-hld');
 const resultContainer = document.querySelector('.result');
 const statsContainer = document.querySelector('.stats');
 const winCountSpan = document.querySelector('#win-count');
@@ -15,6 +16,7 @@ let drawCount = 0;
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
+        resultStatsContainer.classList.remove('hidden');
         resultElement.classList.add('hidden');
         const userChoice = button.id;
 
