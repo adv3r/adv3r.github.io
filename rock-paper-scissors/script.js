@@ -1,13 +1,13 @@
-let buttons = document.querySelectorAll('button');
-let userChoiceSpan = document.querySelector('.user-choice');
-let computerChoiceSpan = document.querySelector('.computer-choice');
-let resultElement = document.querySelector('.game-result');
-let resultContainer = document.querySelector('.result');
-let statsContainer = document.querySelector('.stats');
-let winCountSpan = document.getElementById('win-count');
-let loseCountSpan = document.getElementById('lose-count');
-let drawCountSpan = document.getElementById('draw-count');
-let choices = ['paper', 'rock', 'scissors'];
+const buttons = document.querySelectorAll('button');
+const userChoiceSpan = document.querySelector('.user-choice');
+const computerChoiceSpan = document.querySelector('.computer-choice');
+const resultElement = document.querySelector('.game-result');
+const resultContainer = document.querySelector('.result');
+const statsContainer = document.querySelector('.stats');
+const winCountSpan = document.querySelector('#win-count');
+const loseCountSpan = document.querySelector('#lose-count');
+const drawCountSpan = document.querySelector('#draw-count');
+const choices = ['paper', 'rock', 'scissors'];
 
 let winCount = 0;
 let loseCount = 0;
@@ -15,15 +15,43 @@ let drawCount = 0;
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        let userChoice = button.id;
-        let randomIndex = Math.floor(Math.random() * 3);
-        let computerChoice = choices[randomIndex];
+        resultElement.classList.add('hidden');
+        const userChoice = button.id;
 
         userChoiceSpan.textContent = userChoice;
-        computerChoiceSpan.textContent = computerChoice;
 
-        let result = determineWinner(userChoice, computerChoice);
-        displayResult(result);
+        const animationDuration = 2000;
+
+        let animationInterval;
+        let animationFrame = 0;
+        let computerChoiceIndex = 0;
+
+        function animateComputerChoice() {
+            animationFrame++;
+            if (animationFrame <= animationDuration / 100) {
+                if (computerChoiceIndex >= choices.length) {
+                    computerChoiceIndex = 0;
+                }
+                const computerChoice = choices[computerChoiceIndex];
+                computerChoiceSpan.textContent = computerChoice;
+                computerChoiceIndex++;
+                requestAnimationFrame(animateComputerChoice);
+            } else {
+                clearInterval(animationInterval);
+
+                setTimeout(() => {
+                    const randomIndex = Math.floor(Math.random() * 3);
+                    const computerChoice = choices[randomIndex];
+                    computerChoiceSpan.textContent = computerChoice;
+
+                    const result = determineWinner(userChoice, computerChoice);
+                    resultElement.classList.remove('hidden');
+                    displayResult(result);
+                }, 500); 
+            }
+        }
+
+        animationInterval = requestAnimationFrame(animateComputerChoice);
     });
 });
 
@@ -49,9 +77,9 @@ function displayResult(result) {
     resultElement.className = 'game-result';
     if (result === "You win!") {
         resultElement.classList.add('win');
-    } else if (result === "You lose!") {
+    } else if (result === "You lose") {
         resultElement.classList.add('lose');
-    } else if (result === "Draw!") {
+    } else if (result === "Draw") {
         resultElement.classList.add('draw');
     }
     resultContainer.classList.remove('hidden');
