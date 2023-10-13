@@ -77,9 +77,9 @@ function displayResult(result) {
     resultElement.className = 'game-result';
     if (result === "You win!") {
         resultElement.classList.add('win');
-    } else if (result === "You lose") {
+    } else if (result === "You lose!") {
         resultElement.classList.add('lose');
-    } else if (result === "Draw") {
+    } else if (result === "Draw!") {
         resultElement.classList.add('draw');
     }
     resultContainer.classList.remove('hidden');
