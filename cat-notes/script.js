@@ -1,7 +1,7 @@
 let noteList = document.querySelector('.cat-notes__notes-hld');
 
 function formResults(form) {
-    let catNoteTitle = form.catcatNoteTitle.value;
+    let catNoteTitle = form.catNoteTitle.value;
     let catNoteMessage = form.catNoteMessage.value;
 
     if (catNoteTitle === '' || catNoteMessage === '') {
