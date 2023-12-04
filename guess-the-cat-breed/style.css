@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'Comic Sans MS';
+    src: url("ComicSansMS3.ttf");
+}
+
+* {
+    font-family: Comic Sans MS;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.game-hld {
+    background-color: rgb(255, 235, 83);
+    min-height: 100vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.cat-img {
+    width: 500px;
+    max-width: 100%;
+    margin: 10px 0 40px;
+    box-shadow: 0 0 12px 0 black;
+}
+
+.breeds-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+button {
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, .8);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    touch-action: manipulation;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+button:hover,
+button:focus {
+    background-color: #F082AC;
+    box-shadow: 0 0 5px 0 black;
+}
+/*meow*/
+.points-display {
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.highscore {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .8);
+}
