@@ -32,6 +32,7 @@ img {
 }
 
 .pokemon-name-hld {
+    user-select: none;
     display: none;
 }
 
