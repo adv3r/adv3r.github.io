@@ -3,7 +3,7 @@
 }
 
 body {
-    background: linear-gradient(to right, #abcdef, lightpink);
+    background: linear-gradient(to right, rgba(255, 255, 0,  .31), lightpink);
     min-height: 90vh;
     display: flex;
     justify-content: center;
