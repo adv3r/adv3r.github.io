@@ -1,0 +1,108 @@
+* {
+    font-family: monospace;
+}
+
+body {
+    background-color: rgb(255, 219, 0, .38);
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cats-hld {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 100px;
+}
+
+.cat-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.cat-img-hld {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: yellow;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    touch-action: manipulation;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+h2 {
+    font-size: 25px;
+    text-align: center;
+}
+
+input {
+    background-color: #ff68a2;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    touch-action: manipulation;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+button:hover,
+button:focus {
+    background-color: #F082AC;
+    box-shadow: 0 0 5px 0 black;
+}
