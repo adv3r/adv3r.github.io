@@ -1,24 +1,18 @@
 async function searchPokemon() {
     let inputValue = document.getElementById("pokemonInput").value.toLowerCase();
-    const response = await fetch('https://raw.githubusercontent.com/anhthang/raycast-pokedex/main/src/statics/pokedex.json');
+    const response = await fetch('https://raw.githubusercontent.com/yukomone/pokedex/main/pokedex.json');
     const data = await response.json();
-    const generations = {
-        'kanto': 'Generation I',
-        'johto': 'Generation II',
-        'hoenn': 'Generation III',
-        'sinnoh': 'Generation IV',
-        'unova': 'Generation V',
-        'kalos': 'Generation VI',
-        'alola': 'Generation VII',
-        'galar': 'Generation VIII',
-        'paldea': 'Generation IX'
-    };
+    const generations = ['kanto', 'johto', 'hoenn', 'sinnoh', 'unova', 'kalos', 'alola', 'galar', 'paldea', 'hisui'];
+    const rarities = ['mythical', 'legendary'];
 
-    const selectedGeneration = generations[inputValue];
-
-    if (selectedGeneration) {
+    if (generations.includes(inputValue)) {
         const matchingPokemon = data.filter(pokemon =>
-            pokemon.generation === selectedGeneration
+            pokemon.region.toLowerCase() === inputValue
+        );
+        displayResults(matchingPokemon);
+    } else if (rarities.includes(inputValue)) {
+        const matchingPokemon = data.filter(pokemon =>
+            pokemon.rarity && pokemon.rarity.toLowerCase() === inputValue
         );
         displayResults(matchingPokemon);
     } else {
@@ -46,15 +40,15 @@ function displayResults(pokemonList) {
         const nameElementHld = document.createElement("div");
         nameElementHld.classList.add("pokemon-name-hld");
 
+        let pokemonName = pokemon.name.split(' ').map(word => {
+            return word.charAt(0).toUpperCase() + word.slice(1).replace(/[a-zA-Z]/g, '*');
+        }).join(' ');
+
         const nameElementText = document.createElement("span");
         nameElementText.classList.add("pokemon-name-text");
-        nameElementText.textContent = pokemon.name;
+        nameElementText.textContent = pokemonName;
 
-        const nameElementText2 = document.createElement("span");
-        nameElementText2.classList.add("pokemon-name-text2");
-        nameElementText2.textContent = pokemon.name;
-
-        nameElementHld.append(nameElementText, nameElementText2);
+        nameElementHld.append(nameElementText);
 
         const pokemonDiv = document.createElement("div");
         pokemonDiv.classList.add("pokemon-hld");
@@ -78,6 +72,21 @@ function toggleNameView(element) {
 
     if (!isActive) {
         clickedNameElement.classList.add("is-active");
+    }
+}
+
+function showInfo(element) {
+    const disclaimerElement = document.querySelector(".disclaimer-text-hld");
+
+    const isActive = disclaimerElement.classList.contains("is-active");
+
+    disclaimerElement.classList.remove("is-active");
+
+    if (!isActive) {
+        disclaimerElement.classList.add("is-active");
+        element.textContent = '(click to hide info)';
+    } else {
+        element.textContent = '(click for more info)';
     }
 }
 
