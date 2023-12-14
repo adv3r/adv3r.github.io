@@ -1,0 +1,254 @@
+* {
+    font-family: monospace;
+}
+
+body {
+    background-color: rgb(255, 219, 0, .38);
+}
+
+.result {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+}
+
+img {
+    max-width: 120px;
+    margin-right: 10px;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pokemon-hld {
+    cursor: pointer;
+    max-width: 150px;
+    text-wrap: pretty;
+}
+
+.pokemon-name-hld {
+    user-select: none;
+    height: 0;
+    opacity: 0;
+    transition: all .2s ease;
+}
+
+.pokemon-name-hld.is-active {
+    opacity: 1;
+    height: auto;
+}
+
+.pokemon-name {
+    position: absolute;
+    top: 85%;
+    left: 0;
+}
+
+.pokemon-name-text {
+    font-size: 16px;
+    background: rgba(255, 219, 0, .38);
+    box-shadow: 0 0 10px 5px rgba(255, 219, 0, .38);
+}
+
+button {
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: yellow;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    touch-action: manipulation;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+h2 {
+    font-size: 25px;
+    text-align: center;
+    margin: 10px 0 0;
+}
+
+input {
+    background-color: #ff68a2;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 600;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    touch-action: manipulation;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
+    transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+button:hover,
+button:focus {
+    background-color: #F082AC;
+    box-shadow: 0 0 5px 0 black;
+}
+
+.disclaimer {
+    text-align: center;
+    cursor: pointer;
+}
+
+.disclaimer-text-hld.is-active {
+    opacity: 1;
+    visibility: visible;
+    padding: 10px 20px;
+    height: auto;
+}
+
+.disclaimer-text-hld {
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    height: 0;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 0 20px;
+    transition: all .5s ease;
+}
+
+.disclaimer-list {
+    list-style: none;
+    margin: 5px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 2px;
+    column-gap: 10px;
+    height: 200px;
+}
+
+.disclaimer-text-type-info-list li {
+    font-weight: 800;
+}
+
+.disclaimer-text-region-info-list li, .disclaimer-text-rarity-info-list li {
+    color: rgba(0, 0, 0, .8);
+}
+
+.disclaimer-text-region-info {
+    width: 145px;
+}
+
+.disclaimer-text-rarity-info {
+    width: 80px;
+}
+
+.disclaimer-text-label {
+    font-weight: 800;
+}
+
+.bug {
+    color: #A6B91A;
+}
+
+.dark {
+    color: #705746;
+}
+
+.dragon {
+    color: #6F35FC;
+}
+
+.electric {
+    color: #F7D02C;
+}
+
+.fairy {
+    color: #D685AD;
+}
+
+.fighting {
+    color: #C22E28;
+}
+
+.fire {
+    color: #EE8130;
+}
+
+.flying {
+    color: #A98FF3;
+}
+
+.ghost {
+    color: #735797;
+}
+
+.grass {
+    color: #7AC74C;
+}
+
+.ground {
+    color: #E2BF65;
+}
+
+.ice {
+    color: #96D9D6;
+}
+
+.normal {
+    color: #A8A77A;
+}
+
+.poison {
+    color: #A33EA1;
+}
+
+.psychic {
+    color: #F95587;
+}
+
+.rock {
+    color: #B6A136;
+}
+
+.steel {
+    color: #B7B7CE;
+}
+
+.water {
+    color: #6390F0;
+}
