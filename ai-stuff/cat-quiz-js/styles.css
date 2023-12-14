@@ -1,0 +1,29 @@
+ body {
+     width: 100%;
+     height: 2000px;
+     background-color: #11052C;
+     text-align: center;
+     padding: 0px;
+     margin: 0px;
+     color: #FFE459;
+     font-family: Monospace;
+ }
+
+ hr {
+     border: none;
+ }
+
+ .baton {
+     background-color: lightpink;
+     border: 2px solid pink;
+     border-radius: 25px;
+ }
+
+ .baton:hover {
+     box-shadow: inset 4px 4px 100px -76px rgba(179, 10, 148, 1);
+ }
+
+ img {
+     width: 250px;
+     height: 250px;
+ }
