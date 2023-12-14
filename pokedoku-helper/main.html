@@ -10,7 +10,58 @@
 
 <body>
     <div class="wrapper">
-        <h2 for="pokemonInput">Enter Pokemon Type/Region:</h2>
+        <h2 for="pokemonInput">Enter Pokemon Type/Region/Rarity:</h2>
+        <span class="disclaimer">
+            <span class="disclaimer-hover-label" onclick="showInfo(this)">(click for more info)</span>
+            <span class="disclaimer-text-hld">
+                <span class="disclaimer-text-type-info">
+                    <span class="disclaimer-text-label disclaimer-text-type-info-label">Available types:</span>
+                    <ul class="disclaimer-list disclaimer-text-type-info-list">
+                        <li class="bug">Bug</li>
+                        <li class="dark">Dark</li>
+                        <li class="dragon">Dragon</li>
+                        <li class="electric">Electric</li>
+                        <li class="fairy">Fairy</li>
+                        <li class="fighting">Fighting</li>
+                        <li class="fire">Fire</li>
+                        <li class="flying">Flying</li>
+                        <li class="ghost">Ghost</li>
+                        <li class="grass">Grass</li>
+                        <li class="ground">Ground</li>
+                        <li class="ice">Ice</li>
+                        <li class="normal">Normal</li>
+                        <li class="poison">Poison</li>
+                        <li class="psychic">Psychic</li>
+                        <li class="rock">Rock</li>
+                        <li class="steel">Steel</li>
+                        <li class="water">Water</li>
+                    </ul>
+                </span>
+                <span class="disclaimer-text-region-info">
+                    <span class="disclaimer-text-label disclaimer-text-region-info-label">Available regions:</span>
+                    <ul class="disclaimer-list disclaimer-text-region-info-list">
+                        <li class="">Kanto</li>
+                        <li class="">Johto</li>
+                        <li class="">Hoenn</li>
+                        <li class="">Sinnoh</li>
+                        <li class="">Unova</li>
+                        <li class="">Kalos</li>
+                        <li class="">Alola</li>
+                        <li class="">Galar</li>
+                        <li class="">Paldea</li>
+                        <li class="">Hisui</li>
+                        <li class="">(regionals included)</li>
+                    </ul>
+                </span>
+                <span class="disclaimer-text-rarity-info">
+                    <span class="disclaimer-text-label disclaimer-text-rarity-info-label">Available rarities:</span>
+                    <ul class="disclaimer-list disclaimer-text-rarity-info-list">
+                        <li class="">Legendary</li>
+                        <li class="">Mythical</li>
+                    </ul>
+                </span>
+            </span>
+        </span>
         <input type="text" id="pokemonInput">
         <button onclick="searchPokemon()">Search</button>
     </div>
