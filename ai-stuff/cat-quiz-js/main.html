@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title>Cat Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <center>
+        <h2 style="padding:10px;border-bottom:1px solid white;">Zapraszamy do udziału w quizie o kićkach!</h2>
+        <form id="quizForm">
+            <h3>Wybierz właściwe odpowiedzi!</h3>
+            <hr>
+            <div id="question1">
+                <h4>1. Kot na zdjęciu jest:</h4>
+                <img src="https://pbs.twimg.com/media/Ecib9-JXoAESrDs.jpg"><br>
+                <input type="radio" id="quiz1-odp1" name="odp-quiz1" value="uroczy">
+                <label for="quiz1-odp1">uroczy</label>
+                <input type="radio" id="quiz1-odp2" name="odp-quiz1" value="bardzo-uroczy">
+                <label for="quiz1-odp2">bardzo uroczy</label>
+                <input type="radio" id="quiz1-odp3" name="odp-quiz1" value="niesamowicie-uroczy">
+                <label for="quiz1-odp3">niesamowicie uroczy</label><br><br>
+            </div>
+            <div id="question2">
+                <h4>2. Jakiej rasy jest ten kitek?</h4>
+                <img src="https://i.pinimg.com/236x/ed/f2/ad/edf2adf7dc9df3bd7b2b5343fb51aa2a.jpg"><br>
+                <input type="radio" id="quiz2-odp1" name="odp-quiz2" value="uroczej">
+                <label for="quiz2-odp1">uroczej</label>
+                <input type="radio" id="quiz2-odp2" name="odp-quiz2" value="floppa">
+                <label for="quiz2-odp2">floppa</label>
+                <input type="radio" id="quiz2-odp3" name="odp-quiz2" value="nie-mily">
+                <label for="quiz2-odp3">śmigaj mi z tym kociskiem</label><br><br>
+            </div>
+            <div id="question3">
+                <h4>3. Kiedy obchodzi się święto tego kota?</h4>
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG4W7mPfI4Ss2KPNOzsG-Tt4lXqoXVai1baA&usqp=CAU"><br>
+                <input type="radio" id="quiz3-odp1" name="odp-quiz3" value="groźny">
+                <label for="quiz3-odp1">groźny</label>
+                <input type="radio" id="quiz3-odp2" name="odp-quiz3" value="jutro">
+                <label for="quiz3-odp2">jutro</label>
+                <input type="radio" id="quiz3-odp3" name="odp-quiz3" value="piątek">
+                <label for="quiz3-odp3">piątek</label>
+            </div>
+            <div id="question4">
+                <h4>4. Czy przywdziałbyś taką oto koszulkę?</h4>
+                <img
+                    src="https://ae01.alicdn.com/kf/H05f38e0f55ed41bd968f4c29d705b853s/Big-Floppa-Meme-koszula-dla-kot%C3%B3w-koszulka-damska-koszulka-Oversize-koszulki-Pop-koszula-t-shirty-dla-m%C4%99%C5%BCczyzn-Oversize-koszulka-z-motywem-Anime-Nerdy-tanie-tanio-SHORT-CN-%28pochodzenie%29-COTTON-summer-Na-co-dzie%C5%84-Z-okr%C4%85g%C5%82ym-ko%C5%82nierzykiem-tops-Z-KR%C3%93TKIM-R%C4%98KAWEM-Sukno-Drukuj-Various.jpg_640x640.jpg?lulany"><br>
+                <input type="radio" id="quiz4-odp1" name="odp-quiz4" value="tak">
+                <label for="quiz4-odp1">tak</label>
+                <input type="radio" id="quiz4-odp2" name="odp-quiz4" value="tak">
+                <label for="quiz4-odp2">tak</label>
+                <input type="radio" id="quiz4-odp3" name="odp-quiz4" value="nje">
+                <label for="quiz4-odp3">nje</label>
+            </div>
+            <div id="question5">
+                <h4>5. Finałowe pytanie: wybierz swojego wojownika!</h4>
+                <select name="odp-quiz5" class="baton">
+                    <option value="nic"></option>
+                    <option value="opt1">hecker</option>
+                    <option value="opt2">angry floppa</option>
+                    <option value="opt3">oramge cat</option>
+                    <option value="opt4">chomky cat</option>
+                    <option value="opt5">sleepy cat</option>
+                </select>
+                <input type="button" name="fighter-select" value="Wybieram!" class="baton" onclick="selectFighter()">
+            </div>
+            <br><br><br>
+            <input type="button" name="submit-quiz-odp" value="Sprawdź quiz!" class="baton" onclick="checkQuiz()">
+        </form>
+
+        <div id="quizResults"></div>
+
+    </center>
+    <script src="script.js"></script>
+</body>
+
+</html>
