@@ -52,7 +52,9 @@ img {
 }
 
 .pokemon-name-text {
-    background-color: rgba(255, 192, 203, .59);
+    font-size: 16px;
+    background: rgba(255, 219, 0, .38);
+    box-shadow: 0 0 10px 5px rgba(255, 219, 0, .38);
 }
 
 button {
