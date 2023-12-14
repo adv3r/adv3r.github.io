@@ -2,9 +2,27 @@ async function searchPokemon() {
     const inputValue = document.getElementById("pokemonInput").value.toLowerCase();
     const response = await fetch('https://raw.githubusercontent.com/anhthang/raycast-pokedex/main/src/statics/pokedex.json');
     const data = await response.json();
+    const generations = ['Generation I', 'Generation II', 'Generation III', 'Generation IV', 'Generation V', 'Generation VI', 'Generation VII', 'Generation VIII', 'Generation IX'];
+
+    const generationMapping = {
+        'kanto': 'Generation I',
+        'johto': 'Generation II',
+        'hoenn': 'Generation III',
+        'sinnoh': 'Generation IV',
+        'unova': 'Generation V',
+        'kalos': 'Generation VI',
+        'alola': 'Generation VII',
+        'galar': 'Generation VIII',
+        'paldea': 'Generation IX',
+    };
+
+    const targetGeneration = generationMapping[inputValue] || inputValue;
+
     const matchingPokemon = data.filter(pokemon =>
-        pokemon.types.some(type => type.toLowerCase().includes(inputValue))
+        (!generations.includes(targetGeneration) && pokemon.types.some(type => type.toLowerCase().includes(targetGeneration))) ||
+        (generations.includes(targetGeneration) && pokemon.generation.includes(targetGeneration))
     );
+
     displayResults(matchingPokemon);
 }
 
@@ -28,12 +46,12 @@ function displayResults(pokemonList) {
         const nameElementText = document.createElement("span");
         nameElementText.classList.add("pokemon-name-text");
         nameElementText.textContent = pokemon.name;
-        nameElementHld.append(nameElementText);
 
         const nameElementText2 = document.createElement("span");
         nameElementText2.classList.add("pokemon-name-text2");
         nameElementText2.textContent = pokemon.name;
-        nameElementHld.append(nameElementText2);
+
+        nameElementHld.append(nameElementText, nameElementText2);
 
         const pokemonDiv = document.createElement("div");
         pokemonDiv.classList.add("pokemon-hld");
