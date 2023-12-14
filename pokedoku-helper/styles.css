@@ -29,6 +29,7 @@ img {
 
 .pokemon-hld {
     position: relative;
+    cursor: pointer;
 }
 
 .pokemon-name-hld {

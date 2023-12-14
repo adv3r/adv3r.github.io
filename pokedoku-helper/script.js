@@ -1,10 +1,8 @@
 async function searchPokemon() {
-    const inputValue = document.getElementById("pokemonInput").value.toLowerCase();
+    let inputValue = document.getElementById("pokemonInput").value.toLowerCase();
     const response = await fetch('https://raw.githubusercontent.com/anhthang/raycast-pokedex/main/src/statics/pokedex.json');
     const data = await response.json();
-    const generations = ['Generation I', 'Generation II', 'Generation III', 'Generation IV', 'Generation V', 'Generation VI', 'Generation VII', 'Generation VIII', 'Generation IX'];
-
-    const generationMapping = {
+    const generations = {
         'kanto': 'Generation I',
         'johto': 'Generation II',
         'hoenn': 'Generation III',
@@ -13,17 +11,22 @@ async function searchPokemon() {
         'kalos': 'Generation VI',
         'alola': 'Generation VII',
         'galar': 'Generation VIII',
-        'paldea': 'Generation IX',
+        'paldea': 'Generation IX'
     };
 
-    const targetGeneration = generationMapping[inputValue] || inputValue;
+    const selectedGeneration = generations[inputValue];
 
-    const matchingPokemon = data.filter(pokemon =>
-        (!generations.includes(targetGeneration) && pokemon.types.some(type => type.toLowerCase().includes(targetGeneration))) ||
-        (generations.includes(targetGeneration) && pokemon.generation.includes(targetGeneration))
-    );
-
-    displayResults(matchingPokemon);
+    if (selectedGeneration) {
+        const matchingPokemon = data.filter(pokemon =>
+            pokemon.generation === selectedGeneration
+        );
+        displayResults(matchingPokemon);
+    } else {
+        const matchingPokemon = data.filter(pokemon =>
+            pokemon.types.some(type => type.toLowerCase().includes(inputValue))
+        );
+        displayResults(matchingPokemon);
+    }
 }
 
 function displayResults(pokemonList) {
@@ -65,11 +68,16 @@ function displayResults(pokemonList) {
 }
 
 function toggleNameView(element) {
+    const clickedNameElement = element.querySelector(".pokemon-name-hld");
+    const isActive = clickedNameElement.classList.contains("is-active");
+
     const allNameElements = document.querySelectorAll(".pokemon-name-hld");
     allNameElements.forEach(nameElement => {
         nameElement.classList.remove("is-active");
     });
 
-    const clickedNameElement = element.querySelector(".pokemon-name-hld");
-    clickedNameElement.classList.toggle("is-active");
+    if (!isActive) {
+        clickedNameElement.classList.add("is-active");
+    }
 }
+
