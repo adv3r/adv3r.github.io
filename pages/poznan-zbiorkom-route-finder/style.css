@@ -1,0 +1,99 @@
+body {
+    font-family: monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #2f2e44;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.container {
+    max-width: 320px;
+    width: 100%;
+    padding: 0 20px 15px 20px;
+    background-color: #F0EDFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 5px rgb(255 255 255 / 10%);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #00000061;
+    border-radius: 5px;
+    font-family: inherit;
+    outline: none;
+}
+
+#startStopResults,
+#endStopResults {
+    margin-top: -10px;
+    width: 100%;
+    max-height: 165px;
+    overflow-y: auto;
+}
+
+#startStopResults div,
+#endStopResults div {
+    padding: 8px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+    background-color: rgb(0 0 0 / 6%);
+    letter-spacing: 1px;
+}
+
+#startStopResults div a, #endStopResults div a {
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+button {
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button--route-generation {
+    background-color: #00C893;
+    transition: .1s background-color ease-in;
+}
+
+.button--route-generation:hover {
+    background-color: #45a049;
+}
+
+.button--clear-fields {
+    background-color: #8080806b;
+    transition: .1s background-color ease-in;
+}
+
+.button--clear-fields:hover {
+    background-color: #808080c7;
+}

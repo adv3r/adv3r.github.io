@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poznań public transport route generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body spellcheck="false">
+    <div class="container">
+        <h1>Search routes</h1>
+        <label for="startStop">Where do we start?</label>
+        <input type="text" id="startStop" oninput="debouncedSearchLocation('start')" placeholder="Poznań Główny">
+        <div id="startStopResults"></div>
+
+        <label for="endStop">Where do we go?</label>
+        <input type="text" id="endStop" oninput="debouncedSearchLocation('end')" placeholder="Suchy Las/Szkoła">
+        <div id="endStopResults"></div>
+
+        <label for="departureTime">Departure time:</label>
+        <input type="time" id="departureTime">
+
+        <div class="button-hld">
+            <button type="button" onclick="generateLink()" class="button--route-generation">Generate route</button>
+            <button type="button" onclick="clearFields()" class="button--clear-fields">Clear</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
