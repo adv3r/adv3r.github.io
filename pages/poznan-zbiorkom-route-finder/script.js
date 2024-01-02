@@ -15,7 +15,7 @@ const debounce = (func, delay) => {
 
 const debouncedSearchLocation = debounce((type) => {
     searchLocation(type);
-}, 1000);
+}, 500);
 
 function searchLocation(type) {
     const input = document.getElementById(type === 'start' ? 'startStop' : 'endStop');
