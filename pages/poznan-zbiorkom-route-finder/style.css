@@ -30,6 +30,11 @@ h1 {
     gap: 5px;
 }
 
+.time-input {
+    text-align: center;
+    font-size: 15px;
+}
+
 label {
     display: block;
     margin-bottom: 8px;
