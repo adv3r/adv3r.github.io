@@ -88,6 +88,7 @@ button {
 .button--route-generation {
     background-color: #00C893;
     transition: .1s background-color ease-in;
+    width: 214px;
 }
 
 .button--route-generation:hover {
