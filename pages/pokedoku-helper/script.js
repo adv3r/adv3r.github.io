@@ -1,3 +1,8 @@
+document.querySelector('#pokemonInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        searchPokemon();
+    }
+});
 async function searchPokemon() {
     let inputValue = document.getElementById("pokemonInput").value.toLowerCase();
     const response = await fetch('https://raw.githubusercontent.com/yukomone/pokedex/main/pokedex.json');
