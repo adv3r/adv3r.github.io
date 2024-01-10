@@ -1,0 +1,54 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-hld {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: black;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 35px;
+}
+
+.navbar__list {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    list-style: none;
+}
+
+.navbar__list--item {
+    color: white;
+    position: relative;
+}
+
+.navbar__list--subnav-hld {
+    list-style: none;
+    width: max-content;
+    padding: 10px;
+    position: absolute;
+    top: 25px;
+    left: -2px;
+    background: lightgray;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity .1s ease-in;
+}
+
+.navbar__list--item-text {
+    cursor: pointer;
+}
+
+.navbar__list--item-text:hover~.navbar__list--subnav-hld {
+    opacity: 1;
+}
