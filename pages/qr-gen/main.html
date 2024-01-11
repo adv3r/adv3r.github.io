@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="input-hld">
+                <span class="input--label">Enter text for QR code:</span>
+                <textarea class="input--text js-input"></textarea>
+            </div>
+            <div class="sizes--hld">
+                <span class="input--sizes-label">Pick your size:</span>
+                <select class="input--sizes js-sizes">
+                    <option value="150x150">150x150</option>
+                    <option value="200x200">200x200</option>
+                    <option value="350x350">350x350</option>
+                    <option value="500x500">500x500</option>
+                </select>
+            </div>
+            <label>Custom color? <input type="checkbox" class="input-custom-color js-custom-color"></label>
+            <div class="custom-color--hld">
+                <div class="custom-color--pickers">
+                    <label>QR Background color: <input type="color" class="custom-color--picker js-background-color" value="#FFFFFF"></label>
+                    <label>QR Code color: <input type="color" class="custom-color--picker js-foreground-color"></label>
+                </div>
+            </div>
+            <button class="input--generate js-generate">Generate!</button>
+        </div>
+        <div class="output--hld">
+            <div class="qr-code--hld">
+                <img src="" class="qr-code--img">
+            </div>
+        </div>
+    </div>  
+    <script src="script.js"></script>
+</body>
+</html>
