@@ -1,7 +1,15 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: .3px;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 219, 0, .38);
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper {
@@ -11,6 +19,11 @@ body {
     flex-direction: column;
     gap: 20px;
     margin-top: 80px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    max-width: 85%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .container {
@@ -46,6 +59,13 @@ body {
     transition: all .2s ease;
 }
 
+.custom-color--pickers.is-active {
+    opacity: 1;
+    height: auto;
+    margin: -10px 0 20px;
+    visibility: visible;
+}
+
 .custom-color--hld {
     display: flex;
     visibility: hidden;
@@ -54,13 +74,75 @@ body {
     gap: 10px;
 }
 
-.custom-color--pickers.is-active {
-    opacity: 1;
-    height: auto;
-    margin: -10px 0 20px;
-    visibility: visible;
+.custom-color--picker {
+    width: 50px;
+    padding: 1px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .input--generate {
     margin-top: -20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333333;
+}
+
+textarea,
+select {
+    padding: 10px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.qr-code--hld img {
+    max-width: 100%;
+    border: 1px solid black;
+}
+
+.input--generate {
+    background-color: yellow;
+    color: black;
+    width: 175px;
+    transition: all .2s ease;
+}
+
+.input--generate:hover {
+    letter-spacing: .8px;
+    background-color: rgb(216, 223, 0);
+}
+
+.button--clear-fields {
+    background-color: #8080806b;
+    transition: .1s background-color ease-in;
+}
+
+.button--clear-fields:hover {
+    background-color: #808080c7;
 }

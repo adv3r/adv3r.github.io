@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     let submitButton = document.querySelector('.js-generate');
+    let clearButtton = document.querySelector('.js-clear');
     let userInput = document.querySelector('.js-input');
     let customColorCheckbox = document.querySelector(".js-custom-color");
     let sizesSelect = document.querySelector('.js-sizes');
     let qrBgColorPicker = document.querySelector('.js-background-color');
     let qrFgColorPicker = document.querySelector('.js-foreground-color');
-    let qrCodeImgHld = document.querySelector('.qr-code--img');
+    let qrCodeImgHld = document.querySelector('.qr-code--hld');
+    let colorsInputHld = document.querySelector(".custom-color--pickers");
 
     userInput.addEventListener('input', autoResize, false);
 
@@ -15,14 +17,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     customColorCheckbox.addEventListener('change', () => {
-        const disclaimerElement = document.querySelector(".custom-color--pickers");
-        disclaimerElement.classList.toggle("is-active");
+        colorsInputHld.classList.toggle("is-active");
+    });
+
+    clearButtton.addEventListener('click', () => {
+        userInput.value = '';
+        sizesSelect.value = '150x150';
+        customColorCheckbox.checked = false;
+        if (colorsInputHld.classList.contains('is-active')) {
+            colorsInputHld.classList.toggle("is-active");
+        }
     });
 
     submitButton.addEventListener('click', () => generate(), false);
 
     const generate = async () => {
         if (userInput.value) {
+            qrCodeImgHld.innerHTML = '';
+
             let selectedSize = sizesSelect.options[sizesSelect.selectedIndex].text;
             let qrBgColorValue = '';
             let qrFgColorValue = '';
@@ -46,11 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const response = await fetch(apiUrl);
-            qrCodeImgHld.src = response.url;
+            let qrCodeImg = document.createElement('img');
+            qrCodeImg.src = response.url;
+
+            qrCodeImgHld.appendChild(qrCodeImg);
 
 
         } else {
-            alert('Input some text!');
+            qrCodeImgHld.innerHTML = '<span style="color: red; font-weight: 800;">Input some text for your QR code!</span>'
         }
     };
 });
