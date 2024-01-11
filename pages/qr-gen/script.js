@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         userInput.value = '';
         sizesSelect.value = '150x150';
         customColorCheckbox.checked = false;
+        qrCodeImgHld.innerHTML = '';
         if (colorsInputHld.classList.contains('is-active')) {
             colorsInputHld.classList.toggle("is-active");
         }
