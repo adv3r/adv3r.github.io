@@ -1,8 +1,10 @@
 const tilesContainer = document.getElementById('tiles');
+const resultsLimitSelect = document.getElementById('resultsLimit');
 
 function renderTiles(filteredData) {
     tilesContainer.textContent = '';
-    filteredData.forEach(card => {
+    const resultsLimit = parseFloat(resultsLimitSelect.value);
+    filteredData.slice(0, resultsLimit).forEach(card => {
         const tile = document.createElement('div');
         tile.classList.add('tile');
 
@@ -25,12 +27,15 @@ function renderTiles(filteredData) {
 
         tilesContainer.appendChild(tile);
     });
-    updateCounter(filteredData.length);
+    updateCounter(filteredData.length, resultsLimit);
 }
 
-function updateCounter(count) {
+function updateCounter(totalCount, displayedCount) {
     const counter = document.getElementById('counter');
-    counter.innerHTML = `Showing <b>${count}</b> cards`;
+    if (displayedCount == 'Infinity') {
+        displayedCount = totalCount;
+    }
+    counter.innerHTML = `Showing <b>${displayedCount}</b> out of <b>${totalCount}</b> cards`;
 }
 
 function getCardsCount(category, data) {
@@ -66,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             function updateQuantityOptions() {
                 const seriesValue = seriesSelect.value;
-                const uniqueQuantities = [...new Set(data.data.filter(card => card.catalog_group === seriesValue || seriesValue === '').map(card => card.quantity))].sort();
+                const uniqueQuantities = [...new Set(data.data.filter(card => card.catalog_group === seriesValue || seriesValue === '').map(card => card.quantity))].sort((a, b) => a - b);
                 quantitySelect.innerHTML = '<option value="">All Quantities</option>';
                 uniqueQuantities.forEach(quantity => {
                     const option = document.createElement('option');
@@ -75,6 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     quantitySelect.appendChild(option);
                 });
             }
+
+            resultsLimitSelect.addEventListener('change', () => {
+                filterData();
+            });
 
             function filterData() {
                 const seriesValue = seriesSelect.value;
