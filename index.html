@@ -4,86 +4,122 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>html projects</title>
+    <title>adv3r's html projects</title>
+    <link rel="stylesheet" href="src/css/index-styles.css">
     <link rel="icon" href="src/favicon.ico">
-    <link rel="stylesheet" href="src/index-styles.css">
 </head>
-    <body>
-        <div class="main">
-            <ul class="project-list">
-                <li class="project-list--item">
-                    <span class="section-heading">Projects</span>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/calculator/main.html">calculator</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/kici-formularz/form.html">formularz</a><br>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/polregio-status-screen/main.html">polregio status screen</a><br>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/product-landing/main.html">product landing</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/survey-form/main.html">survey form</a>
-                </li>
-                <!--<li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/tribute-page/main.html">tribute page</a>
-                </li>-->
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/cat-cube/main.html">cat cube</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/pixel-art-gen/main.html">mona lisa generator</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/balls/main.html">bouncing dots</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/poznan-zbiorkom-route-finder/main.html">Poznań Public Transport Route Finder</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/rock-paper-scissors/main.html">&#128511; &#129531; &#9986;&#65039; </a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/cat-notes/main.html">cat notes</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/guess-the-cat-breed/main.html">guess the cat breed game</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/qr-gen/main.html">QR code generator</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/pokedoku-helper/main.html">pokedoku helper</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/cat-generator/main.html">cat generator</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/random-cat-generator/main.html">random cat every 2 minutes</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="pages/pokemon-cards-collection/main.html">adv3r's cards collection</a>
-                </li>
-                <li class="project-list--item">
-                    <span class="section-heading">AI Projects</span>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="ai-stuff/earth/main.html">Earth</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="ai-stuff/catch-the-fish/main.html">Catch the Fish</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="ai-stuff/cat-quiz-js/main.html">Cat Quiz JSed</a>
-                </li>
-                <li class="project-list--item">
-                    <a class="project-list--item-link" href="ai-stuff/aspect-ratio/main.html">Aspect Ratio Calculator</a>
-                </li>
-            </ul>
-        </div>
-    </body>
+<body class="dark-mode">
+    <!-- Dark Mode Toggle -->
+    <div class="theme-switch-wrapper">
+        <div class="theme-switch--label">Theme</div>
+        <label class="theme-switch" for="theme-checkbox">
+            <input type="checkbox" id="theme-checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <header>
+            <h1>adv3r's projects portfolio</h1>
+        </header>
+        
+        <!-- Projects Grid -->
+        <section class="projects-grid">
+            <div class="project-card project-card--bged project-card--calculator">
+                <h2>Calculator</h2>
+                <a href="pages/calculator/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--polregio">
+                <h2>Polregio Status Screen</h2>
+                <a href="pages/polregio-status-screen/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--form">
+                <h2>Survey Form</h2>
+                <a href="pages/survey-form/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--cube">
+                <h2>Cat Cube</h2>
+                <a href="pages/cat-cube/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--gen">
+                <h2>Mona Lisa Generator</h2>
+                <a href="pages/pixel-art-gen/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--dots">
+                <h2>Bouncing Dots</h2>
+                <a href="pages/balls/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--howigo">
+                <h2>Poznań Public Transport Route Finder</h2>
+                <a href="pages/poznan-zbiorkom-route-finder/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--rps">
+                <h2>Rock, Paper, Scissors</h2>
+                <a href="pages/rock-paper-scissors/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--notes">
+                <h2>Cat Notes</h2>
+                <a href="pages/cat-notes/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--cat-quiz">
+                <h2>Guess the Cat Breed Game</h2>
+                <a href="pages/guess-the-cat-breed/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--qr-gen">
+                <h2>QR Code Generator</h2>
+                <a href="pages/qr-gen/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--helper">
+                <h2>Pokedoku Helper</h2>
+                <a href="pages/pokedoku-helper/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--cat-gen">
+                <h2>Cat Generator</h2>
+                <a href="pages/cat-generator/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--random-cat">
+                <h2>Random Cat Every 2 Minutes</h2>
+                <a href="pages/random-cat-generator/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--cards">
+                <h2>adv3r's Cards Collection</h2>
+                <a href="pages/pokemon-cards-collection/main.html" class="project-btn">View Project</a>
+            </div>
+            <!-- archive -->
+                <!-- <div class="project-card">
+                    <h2>Product Landing</h2>
+                    <a href="pages/product-landing/main.html" class="project-btn">View Project</a>
+                </div> -->
+                <!-- <div class="project-card">
+                    <h2>Formularz</h2>
+                    <a href="pages/kici-formularz/form.html" class="project-btn">View Project</a>
+                </div> -->
+            <!-- end archive -->
+        </section>     
+            <header>
+                <h1>AI Projects</h1>
+            </header>
+        <section class="projects-grid">
+            <div class="project-card project-card--bged project-card--earth">
+                <h2>Earth</h2>
+                <a href="ai-stuff/earth/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--fish">
+                <h2>Catch the Fish</h2>
+                <a href="ai-stuff/catch-the-fish/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--cat-quiz-jsed">
+                <h2>Cat Quiz JSed</h2>
+                <a href="ai-stuff/cat-quiz-js/main.html" class="project-btn">View Project</a>
+            </div>
+            <div class="project-card project-card--bged project-card--ratio">
+                <h2>Aspect Ratio Calculator</h2>
+                <a href="ai-stuff/aspect-ratio/main.html" class="project-btn">View Project</a>
+            </div>
+        </section>        
+    </div>
+
+    <script src="src/js/index.js"></script>
+</body>
 </html>
