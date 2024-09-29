@@ -21,7 +21,7 @@
             "catalog_group": "Pokemon 151",
             "image_url": "https://adv3r.github.io/Pokemon-Cards-Index/images/SV2A - 151/sv2a-Omanyte-138-165.png",
             "product_name": "Omanyte (Master Ball Reverse Holo)",
-            "quantity": "2",
+            "quantity": "1",
             "rarity": "Uncommon"
         },
         {
@@ -5229,6 +5229,14 @@
             "catalog_group": "Obsidian Flames",
             "image_url": "https://adv3r.github.io/Pokemon-Cards-Index/images/Obsidian Flames/Houndstone-101-197.jpg",
             "product_name": "Houndstone",
+            "quantity": "1",
+            "rarity": "Uncommon"
+        },
+        {
+            "card_number": "138/165",
+            "catalog_group": "Pokemon 151",
+            "image_url": "https://adv3r.github.io/Pokemon-Cards-Index/images/SV2A - 151/sv2a-Omanyte-138-165.png",
+            "product_name": "Omanyte",
             "quantity": "1",
             "rarity": "Uncommon"
         },
