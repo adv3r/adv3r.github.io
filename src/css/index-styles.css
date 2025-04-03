@@ -254,6 +254,7 @@ input:checked + .slider:before {
 
 .project-card--sinsay {
     background-image: url(/src/projects/sinsay.png);
+    background-size: contain;
 }
 
 /* RESPO */
