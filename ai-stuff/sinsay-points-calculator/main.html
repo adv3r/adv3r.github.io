@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinsay Club Calc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray: #D3D3D3;
+            --shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: var(--black);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .calculator-container {
+            background: var(--black);
+            color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--white);
+        }
+
+        .language-switcher {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .language-switcher select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid var(--white);
+            background: var(--black);
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .instructions {
+            font-size: 0.9rem;
+            text-align: center;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--white);
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: var(--black);
+            color: var(--white);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .streak-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .streak-control input[type="number"] {
+            width: 50px;
+            text-align: center;
+        }
+
+        .streak-control button {
+            background-color: var(--white);
+            color: var(--black);
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .streak-control button:hover {
+            transform: scale(1.1);
+        }
+
+        .checkbox-group {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            background-color: var(--white);
+            color: var(--black);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            margin-top: 15px;
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .result-panel {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: var(--gray);
+            color: var(--black);
+        }
+
+        .show {
+            display: block;
+            animation: slideIn 0.3s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .result-panel p {
+            margin: 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .reached {
+            font-weight: bold;
+        }
+
+        .remaining {
+            color: #666;
+            font-weight: bold;
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .milestone-icon {
+            margin-left: 10px;
+            font-size: 16px;
+        }
+
+        .milestone-icon.low {
+            color: #4CAF50;
+        }
+
+        .milestone-icon.medium {
+            color: #2196F3;
+        }
+
+        .milestone-icon.high {
+            color: #FFD700;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .calculator-container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .instructions {
+                font-size: 0.85rem;
+            }
+
+            input[type="number"] {
+                font-size: 0.9rem;
+            }
+
+            .streak-control input[type="number"] {
+                width: 40px;
+            }
+
+            .streak-control button {
+                width: 25px;
+                height: 25px;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="language-switcher">
+            <select id="language-select">
+                <option value="pl">PL</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+
+        <h1><i class="fas fa-calculator icon"></i><span class="translatable" data-key="title">Sinsay Club Kalkulator</span></h1>
+        
+        <div class="instructions translatable" data-key="instructions">
+            Wpisz swoje aktualne punkty i streak, aby obliczyć, ile dni brakuje do osiągnięcia kuponów.
+        </div>
+
+        <div class="input-group">
+            <label for="points" class="translatable" data-key="pointsLabel">Aktualne punkty:</label>
+            <input type="number" id="points" value="0" min="0" required>
+        </div>
+
+        <div class="input-group">
+            <label for="streak" class="translatable" data-key="streakLabel">Aktualny streak (1-7):</label>
+            <div class="streak-control">
+                <button id="decrease-streak">−</button>
+                <input type="number" id="streak" value="1" min="1" max="7" required>
+                <button id="increase-streak">+</button>
+            </div>
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="streakDoneToday" name="streakDoneToday">
+            <label for="streakDoneToday" class="translatable" data-key="streakDoneTodayLabel">Zrobiłem już dzisiaj streak</label>
+        </div>
+
+        <button id="calculate-btn" class="btn translatable" data-key="calculateButton">Oblicz</button>
+
+        <div id="results" class="result-panel hidden"></div>
+        <button id="details-btn" class="btn translatable hidden" data-key="showDetailsButton">Pokaż szczegóły</button>
+
+        <div id="details" class="result-panel hidden">
+            <h2 class="translatable" data-key="detailsTitle">Szczegóły zdobywania punktów</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="translatable" data-key="dateColumn">Data</th>
+                        <th class="translatable" data-key="pointsColumn">Punkty</th>
+                    </tr>
+                </thead>
+                <tbody id="detailsTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const DAILY_POINTS = [1, 5, 10, 15, 20, 30, 50];
+        const GOALS = [
+            { points: 300, coupon: "10 PLN" },
+            { points: 550, coupon: "25 PLN" },
+            { points: 1200, coupon: "50 PLN" }
+        ];
+        
+        const translations = {
+            pl: {
+                title: "Sinsay Club Kalkulator",
+                instructions: "Wpisz swoje aktualne punkty i streak, aby obliczyć, ile dni brakuje do osiągnięcia kuponów.",
+                pointsLabel: "Aktualne punkty:",
+                streakLabel: "Aktualny streak (1-7):",
+                streakDoneTodayLabel: "Zrobiłem już dzisiaj streak",
+                calculateButton: "Oblicz",
+                reached: "Masz już {points} punktów lub więcej. ({coupon})",
+                remaining: "Do {points} punktów brakuje {days} dni. ({coupon})",
+                showDetailsButton: "Pokaż szczegóły",
+                detailsTitle: "Szczegóły zdobywania punktów",
+                dateColumn: "Data",
+                pointsColumn: "Punkty"
+            },
+            en: {
+                title: "Sinsay Club Calculator",
+                instructions: "Enter your current points and streak to calculate how many days are left to reach the coupons.",
+                pointsLabel: "Current points:",
+                streakLabel: "Current streak (1-7):",
+                streakDoneTodayLabel: "I've already done today's streak",
+                calculateButton: "Calculate",
+                reached: "You already have {points} points or more. ({coupon})",
+                remaining: "You need {days} more days to reach {points} points. ({coupon})",
+                showDetailsButton: "Show details",
+                detailsTitle: "Points Earning Details",
+                dateColumn: "Date",
+                pointsColumn: "Points"
+            }
+        };
+
+        const state = {
+            currentLanguage: 'pl'
+        };
+
+        const elements = {
+            langSelect: document.getElementById('language-select'),
+            decreaseBtn: document.getElementById('decrease-streak'),
+            increaseBtn: document.getElementById('increase-streak'),
+            calculateBtn: document.getElementById('calculate-btn'),
+            detailsBtn: document.getElementById('details-btn'),
+            pointsInput: document.getElementById('points'),
+            streakInput: document.getElementById('streak'),
+            streakCheckbox: document.getElementById('streakDoneToday'),
+            resultsDiv: document.getElementById('results'),
+            detailsDiv: document.getElementById('details'),
+            detailsTable: document.getElementById('detailsTableBody')
+        };
+
+        function initEventListeners() {
+            elements.langSelect.addEventListener('change', () => updateLanguage(elements.langSelect.value));
+            elements.decreaseBtn.addEventListener('click', decreaseStreak);
+            elements.increaseBtn.addEventListener('click', increaseStreak);
+            elements.calculateBtn.addEventListener('click', calculatePoints);
+            elements.detailsBtn.addEventListener('click', toggleDetails);
+            
+            elements.streakInput.addEventListener('input', () => {
+                const value = parseInt(elements.streakInput.value) || 0;
+                elements.streakInput.value = Math.min(Math.max(value, 1), 7);
+            });
+        }
+
+        function updateLanguage(lang) {
+            state.currentLanguage = lang;
+            document.querySelectorAll('.translatable').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            if (!elements.resultsDiv.classList.contains('hidden')) {
+                calculatePoints();
+            }
+        }
+
+        function increaseStreak() {
+            const value = parseInt(elements.streakInput.value) || 1;
+            if (value < 7) elements.streakInput.value = value + 1;
+        }
+
+        function decreaseStreak() {
+            const value = parseInt(elements.streakInput.value) || 1;
+            if (value > 1) elements.streakInput.value = value - 1;
+        }
+
+        function calculatePoints() {
+            const points = parseInt(elements.pointsInput.value) || 0;
+            const userStreak = Math.min(Math.max(parseInt(elements.streakInput.value) || 1, 1), 7);
+            const streakDoneToday = elements.streakCheckbox.checked;
+            const streak = userStreak - 1;
+
+            const results = GOALS.map(goal => {
+                const pointsToReach = goal.points - points;
+                const coupon = state.currentLanguage === 'pl' ? `kupon ${goal.coupon}` : `${goal.coupon} coupon`;
+
+                if (pointsToReach <= 0) {
+                    return { goal: goal.points, coupon, days: 0, reached: true };
+                }
+
+                let currentPoints = points;
+                let days = streakDoneToday ? 1 : 0;
+                let currentStreak = streakDoneToday ? (streak + 1) % 7 : streak;
+
+                while (currentPoints < goal.points) {
+                    currentPoints += DAILY_POINTS[currentStreak];
+                    currentStreak = (currentStreak + 1) % 7;
+                    days++;
+                }
+
+                return { goal: goal.points, coupon, days, reached: false };
+            });
+
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            elements.resultsDiv.innerHTML = results.map(result => {
+                const textKey = result.reached ? 'reached' : 'remaining';
+                const text = translations[state.currentLanguage][textKey]
+                    .replace('{points}', result.goal)
+                    .replace('{days}', result.days)
+                    .replace('{coupon}', result.coupon);
+                    
+                return `<p class="${result.reached ? 'reached' : 'remaining'}">${text}</p>`;
+            }).join('');
+            
+            elements.resultsDiv.classList.remove('hidden');
+            elements.resultsDiv.classList.add('show');
+            elements.detailsBtn.classList.remove('hidden');
+            elements.detailsDiv.classList.add('hidden');
+        }
+
+        function toggleDetails() {
+            if (elements.detailsDiv.classList.contains('hidden')) {
+                const points = parseInt(elements.pointsInput.value) || 0;
+                const userStreak = Math.min(Math.max(parseInt(elements.streakInput.value) || 1, 1), 7);
+                const streakDoneToday = elements.streakCheckbox.checked;
+                const streak = userStreak - 1;
+
+                const details = generateDetails(points, streak, streakDoneToday);
+                elements.detailsTable.innerHTML = details.map(detail => `
+                    <tr>
+                        <td>${detail.date}${detail.milestone}</td>
+                        <td>${detail.points}</td>
+                    </tr>
+                `).join('');
+                
+                elements.detailsDiv.classList.remove('hidden');
+                elements.detailsDiv.classList.add('show');
+            } else {
+                elements.detailsDiv.classList.add('hidden');
+                elements.detailsDiv.classList.remove('show');
+            }
+        }
+
+        function generateDetails(points, streak, streakDoneToday) {
+            const today = new Date();
+            let currentPoints = points;
+            let currentStreak = streakDoneToday ? (streak + 1) % 7 : streak;
+            const startDay = streakDoneToday ? 1 : 0;
+            const milestoneDays = new Set();
+            const allDetails = [];
+            
+            let day = startDay;
+            const maxPoints = GOALS[GOALS.length - 1].points;
+            
+            while (currentPoints < maxPoints) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + day);
+                const dateString = date.toLocaleDateString(state.currentLanguage === 'pl' ? 'pl-PL' : 'en-US');
+
+                currentPoints += DAILY_POINTS[currentStreak];
+                currentStreak = (currentStreak + 1) % 7;
+
+                let milestone = '';
+                for (const goal of GOALS) {
+                    if (currentPoints >= goal.points && (allDetails.length === 0 || allDetails[allDetails.length - 1].points < goal.points)) {
+                        const iconClass = goal.points === 300 ? 'low' : goal.points === 550 ? 'medium' : 'high';
+                        milestone = `<i class="fas fa-exclamation-circle milestone-icon ${iconClass}"></i> (${goal.coupon})`;
+                        milestoneDays.add(day);
+                    }
+                }
+
+                allDetails.push({ day, date: dateString, points: currentPoints, milestone });
+                day++;
+            }
+
+            const daysToShow = new Set();
+            milestoneDays.forEach(day => {
+                if (day - 1 >= startDay) daysToShow.add(day - 1);
+                daysToShow.add(day);
+                if (day + 1 < allDetails.length + startDay) daysToShow.add(day + 1);
+            });
+
+            return Array.from(daysToShow)
+                .sort((a, b) => a - b)
+                .map(day => allDetails[day - startDay]);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initEventListeners();
+            updateLanguage('pl');
+        });
+    </script>
+</body>
+</html>

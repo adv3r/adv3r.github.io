@@ -252,6 +252,10 @@ input:checked + .slider:before {
     background-image: url(/src/projects/ratio.png);
 }
 
+.project-card--sinsay {
+    background-image: url(/src/projects/sinsay.png);
+}
+
 /* RESPO */
 
 @media screen and (max-width: 450px) {
